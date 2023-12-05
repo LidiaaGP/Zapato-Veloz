@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Zapato Veloz: Sección de Mujer</title>
+</head>
+<body>
+	
+	<div th:include="plantilla.html::cabecera"></div>
+	
+    <main>
+		<form th:action="@{/guardarPrenda}" method="get" th:object="${prenda}" >
+			<input type="text" name="nombre" th:field="*{nombre}" required placeholder="nombre de la prenda"><br>
+			
+			<input type="number" name="precio" th:field="*{precio}"required placeholder="precio de la prenda"><br>
+			
+			<input type="text" name="foto" th:field="*{foto}" required placeholder="nombre.extension de la foto"><br>
+
+			<select name="categoria.id" th:field="*{categoria.id}" required>
+			<option th:each="elemento : ${categorias}" th:value="${elemento.id}" th:text="${elemento.categoria}"></option>
+			</select><br>
+			
+			
+			<select name="temporada.id" th:field="*{temporada.id}" required>
+				<option th:each="elemento : ${temporadas}" th:value="${elemento.id}" th:text="${elemento.temporada}"></option>
+			</select><br>
+			
+			<input type="submit" value="Añadir">
+		
+		</form>
+    </main>
+
+    <div th:include="plantilla.html::pie"></div>
+
+</body>
+</html>

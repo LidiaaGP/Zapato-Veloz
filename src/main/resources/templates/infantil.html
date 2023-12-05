@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Zapato Veloz: Sección Infantil</title>
+</head>
+<body>
+	
+	<div th:include="plantilla.html::cabecera"></div>
+	
+    <main>
+		<div th:include="plantilla.html::menu"></div>
+		
+         <section id="catalogo" class="catalogo_grid">
+			
+          <article class="producto" th:each="objeto : ${listaPrendas}">
+			<img th:src="'imagenes/infantil/' + ${objeto.foto}" width="100%">
+			<p th:text="${objeto.temporada.temporada}"></p>
+			<div>
+				<p class="nombre" th:text="${objeto.nombre}"></p>
+				<p class="precio" th:text="${objeto.precio}"></p>
+			</div>
+			</article>
+
+        </section>
+    </main>
+
+    <div th:include="plantilla.html::pie"></div>
+
+</body>
+</html>
